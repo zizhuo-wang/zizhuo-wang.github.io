@@ -1,0 +1,63 @@
+<div class="beyond-research">
+	<details>
+		<summary>
+			<span>Beyond Research</span>
+			<span class="summary-indicator" aria-hidden="true"></span>
+		</summary>
+		<div class="beyond-content" data-placeholder="true">
+			<!-- TODO: replace with personal interests and short introduction -->
+			<p>TODO: replace with personal interests and short introduction</p>
+		</div>
+	</details>
+</div>
+
+<style>
+	.beyond-research {
+		margin-top: 1rem;
+	}
+
+	details {
+		border-top: 1px solid var(--color-border);
+	}
+
+	summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-block: 0.9rem;
+		cursor: pointer;
+		color: var(--color-text-muted);
+		font-size: 0.88rem;
+		font-weight: 600;
+		line-height: 1.4;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.summary-indicator::before {
+		color: var(--color-text-muted);
+		content: '+';
+		font-size: 1rem;
+		font-weight: 400;
+	}
+
+	details[open] .summary-indicator::before {
+		content: '−';
+	}
+
+	.beyond-content {
+		max-width: 42rem;
+		padding: 0.1rem 0 1rem;
+	}
+
+	.beyond-content p {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: 0.84rem;
+		line-height: 1.55;
+	}
+</style>

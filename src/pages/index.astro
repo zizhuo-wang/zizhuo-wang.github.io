@@ -1,11 +1,62 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ExperienceList from '../components/ExperienceList.astro';
+import Intro from '../components/Intro.astro';
+import NewsList from '../components/NewsList.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import { experienceItems } from '../data/experience';
+import { newsItems } from '../data/news';
+import { projects } from '../data/projects';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+	<Intro />
+	<NewsList items={newsItems} />
+
+	<section class="content-section" id="research" aria-labelledby="research-heading">
+		<div class="page-container">
+			<header class="section-header">
+				<h2 id="research-heading">Selected Research</h2>
+				<p>
+					Project and associated publication details below are placeholders pending verified
+					content and media.
+				</p>
+			</header>
+
+			<div class="academic-list">
+				{projects.map((project) => <ProjectItem project={project} />)}
+			</div>
+		</div>
+	</section>
+
+	<ExperienceList items={experienceItems} />
+</BaseLayout>
+
+<style>
+	.section-header {
+		margin-bottom: 0.25rem;
+	}
+
+	.section-header h2,
+	.section-header p {
+		margin: 0;
+	}
+
+	.section-header h2 {
+		font-size: var(--font-size-section-title);
+		font-weight: 680;
+		line-height: 1.25;
+	}
+
+	.section-header p {
+		max-width: 42rem;
+		margin-top: 0.35rem;
+		color: var(--color-text-muted);
+		font-size: 0.88rem;
+		line-height: 1.5;
+	}
+
+	.academic-list {
+		border-bottom: 1px solid var(--color-border);
+	}
+</style>

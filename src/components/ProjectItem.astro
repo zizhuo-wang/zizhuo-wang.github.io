@@ -1,0 +1,162 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+const publicationLine = [project.venue, project.year].filter(Boolean).join(', ');
+---
+
+<article class="project-item" data-placeholder={project.placeholder ? 'true' : undefined}>
+	{
+		project.media.type === 'video' && project.media.src ? (
+			<video
+				class="project-media"
+				src={project.media.src}
+				poster={project.media.poster}
+				aria-label={project.media.alt}
+				muted
+				playsinline
+				preload="metadata"
+				controls
+			/>
+		) : project.media.type === 'image' && project.media.src ? (
+			<img class="project-media" src={project.media.src} alt={project.media.alt} loading="lazy" />
+		) : (
+			<div class="project-media media-placeholder" role="img" aria-label={project.media.alt}>
+				<span>Project media placeholder</span>
+			</div>
+		)
+	}
+
+	<div class="project-content">
+		<h3>{project.title}</h3>
+		<p class="description">{project.description}</p>
+		<p class="authors">
+			{
+				project.authors.map((author, index) => (
+					<span>
+						<span class:list={{ 'site-author': author.isSiteOwner }}>{author.name}</span>
+						{index < project.authors.length - 1 ? ', ' : ''}
+					</span>
+				))
+			}
+		</p>
+		{publicationLine && <p class="publication-meta">{publicationLine}</p>}
+		{project.publicationStatus && <p class="publication-status">{project.publicationStatus}</p>}
+		<div class="item-links" aria-label={`Links for ${project.title}`}>
+			{
+				project.links.map((link) =>
+					link.href ? (
+						<a href={link.href}>{link.label}</a>
+					) : (
+						<span aria-disabled="true">
+							{link.label}<span class="visually-hidden"> link forthcoming</span>
+						</span>
+					),
+				)
+			}
+		</div>
+	</div>
+</article>
+
+<style>
+	.project-item {
+		display: grid;
+		gap: 1.1rem;
+		padding-block: 1.4rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.project-media {
+		width: min(100%, 16rem);
+		aspect-ratio: 16 / 10;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-media);
+		background: var(--color-placeholder);
+		object-fit: cover;
+	}
+
+	.media-placeholder {
+		display: grid;
+		place-items: center;
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+		text-align: center;
+	}
+
+	.project-content h3,
+	.project-content p {
+		margin: 0;
+	}
+
+	.project-content h3 {
+		font-size: 1.08rem;
+		font-weight: 680;
+		line-height: 1.35;
+	}
+
+	.description {
+		margin-top: 0.45rem !important;
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+
+	.authors {
+		margin-top: 0.35rem !important;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.site-author {
+		font-weight: 700;
+	}
+
+	.publication-meta,
+	.publication-status {
+		color: var(--color-text-muted);
+		font-size: 0.84rem;
+		line-height: 1.45;
+	}
+
+	.publication-meta {
+		margin-top: 0.15rem !important;
+		font-style: italic;
+	}
+
+	.publication-status {
+		margin-top: 0.1rem !important;
+	}
+
+	.item-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.9rem;
+		margin-top: 0.55rem;
+		font-size: 0.86rem;
+	}
+
+	.item-links a {
+		font-weight: 550;
+	}
+
+	.item-links span[aria-disabled='true'] {
+		color: var(--color-text-muted);
+		text-decoration: underline;
+		text-decoration-color: var(--color-border-strong);
+		text-underline-offset: 0.18em;
+	}
+
+	@media (min-width: 40rem) {
+		.project-item {
+			grid-template-columns: clamp(13.75rem, 27vw, 16rem) minmax(0, 1fr);
+			gap: clamp(1.5rem, 4vw, 2.25rem);
+		}
+
+		.project-media {
+			width: 100%;
+		}
+	}
+</style>

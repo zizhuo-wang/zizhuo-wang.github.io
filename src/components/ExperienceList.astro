@@ -31,10 +31,21 @@ const { items } = Astro.props;
 
 <style>
 	h2 {
+		position: relative;
+		width: fit-content;
 		margin: 0 0 1rem;
 		font-size: var(--font-size-section-title);
 		font-weight: 680;
 		line-height: 1.25;
+	}
+
+	h2::after {
+		display: block;
+		width: 2rem;
+		height: 2px;
+		margin-top: 0.45rem;
+		background: var(--color-link);
+		content: '';
 	}
 
 	.experience-list {

@@ -3,6 +3,7 @@ import BeyondResearch from './BeyondResearch.astro';
 
 interface PortraitLink {
 	label: string;
+	href?: string;
 	iconPaths?: readonly string[];
 	iconText?: string;
 }
@@ -20,6 +21,7 @@ const portraitLinks: PortraitLink[] = [
 	},
 	{
 		label: 'GitHub',
+		href: 'https://github.com/Wzz-D',
 		iconPaths: [
 			'M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.1-1.46-1.1-1.46-.9-.61.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.64.35-1.08.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.26-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.52 9.52 0 0 1 12 6.8c.85 0 1.71.11 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.39.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.69-4.57 4.94.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z',
 		],
@@ -31,13 +33,18 @@ const portraitLinks: PortraitLink[] = [
 			'M14.8 9.2c4 0 7.2 2.4 7.2 5.4 0 1.7-1 3.2-2.6 4.2L20 21l-2.8-1.3c-.8.2-1.6.3-2.4.3-3.7 0-6.7-2.1-7.2-4.8',
 		],
 	},
-] as const;
+];
 ---
 
-<!-- TODO: replace with real content once the portrait, affiliation, biography, and profile links are provided. -->
+<!-- TODO: replace the portrait, biography, and placeholder profile links with verified content. -->
 <section class="intro" id="about" aria-labelledby="intro-name">
 	<div class="page-container intro-layout">
-		<div class="intro-profile">
+		<header class="intro-heading">
+			<h1 id="intro-name">Zizhuo Wang</h1>
+			<p class="research-role"><em>Robotics &amp; AI Researcher</em></p>
+		</header>
+
+		<aside class="intro-profile" aria-label="Profile and contact information">
 			<div
 				class="portrait-placeholder"
 				role="img"
@@ -46,36 +53,58 @@ const portraitLinks: PortraitLink[] = [
 				<span>Portrait photo<br />to be added</span>
 			</div>
 
-			<div class="profile-details">
+			<div class="contact-panel">
+				<h2>Contact</h2>
 				<p class="student-title">Undergraduate Student</p>
 				<p class="institution">Tsinghua University</p>
 				<a href="mailto:wangzizhuo906@gmail.com">wangzizhuo906@gmail.com</a>
 			</div>
 
-			<div class="portrait-links" aria-label="Contact and profile links forthcoming">
+			<nav class="portrait-links" aria-label="Academic and social profiles">
 				<ul>
-					{portraitLinks.map(({ label, iconPaths, iconText }) => (
-						<li>
-							<span class="portrait-link" aria-disabled="true">
-								{iconText ? (
-									<span class="icon-text" aria-hidden="true">{iconText}</span>
+					{
+						portraitLinks.map(({ label, href, iconPaths, iconText }) => (
+							<li>
+								{href ? (
+									<a
+										class="portrait-link"
+										href={href}
+										target="_blank"
+										rel="noreferrer"
+										aria-label={label}
+									>
+										{iconText ? (
+											<span class="icon-text" aria-hidden="true">{iconText}</span>
+										) : (
+											<svg viewBox="0 0 24 24" aria-hidden="true">
+												{iconPaths?.map((path) => <path d={path} />)}
+											</svg>
+										)}
+									</a>
 								) : (
-									<svg viewBox="0 0 24 24" aria-hidden="true">
-										{iconPaths?.map((path) => <path d={path} />)}
-									</svg>
+									<span
+										class="portrait-link is-disabled"
+										aria-disabled="true"
+										title={`${label} link forthcoming`}
+									>
+										{iconText ? (
+											<span class="icon-text" aria-hidden="true">{iconText}</span>
+										) : (
+											<svg viewBox="0 0 24 24" aria-hidden="true">
+												{iconPaths?.map((path) => <path d={path} />)}
+											</svg>
+										)}
+										<span class="visually-hidden">{label} link forthcoming</span>
+									</span>
 								)}
-								<span class="visually-hidden">{label} link forthcoming</span>
-							</span>
-						</li>
-					))}
+							</li>
+						))
+					}
 				</ul>
-			</div>
-		</div>
+			</nav>
+		</aside>
 
 		<div class="intro-copy">
-			<h1 id="intro-name">Zizhuo Wang</h1>
-			<p class="research-role"><em>Robotics &amp; AI Researcher</em></p>
-
 			<div class="biography">
 				<p>
 					I am a researcher working on robot learning and intelligent robotic systems. My
@@ -88,11 +117,14 @@ const portraitLinks: PortraitLink[] = [
 				</p>
 			</div>
 
-			<p class="research-interests">
-				<strong>Research interests:</strong>{' '}
-				Humanoid Robotics · Robot Learning · Loco-Manipulation · Tactile Sensing ·
-				Dexterous Interaction
-			</p>
+			<div class="research-interests">
+				<h2>Research Interests</h2>
+				<ol>
+					<li>Humanoid Robotics</li>
+					<li>Robot Learning &amp; Loco-Manipulation</li>
+					<li>Tactile Sensing &amp; Dexterous Interaction</li>
+				</ol>
+			</div>
 
 			<BeyondResearch />
 		</div>
@@ -101,163 +133,230 @@ const portraitLinks: PortraitLink[] = [
 
 <style>
 	.intro {
-		padding-block: clamp(2.5rem, 6vw, 4.25rem) 1rem;
+		padding-block: clamp(2.75rem, 6vw, 4.75rem) 0;
 	}
 
 	.intro-layout {
 		display: grid;
+		grid-template-areas:
+			'heading'
+			'profile'
+			'copy';
 		gap: 1.75rem;
 		align-items: start;
 	}
 
-	.intro-profile {
-		width: min(11.25rem, 55vw);
+	.intro-heading {
+		grid-area: heading;
 	}
 
-	.portrait-placeholder {
-		display: grid;
-		place-items: center;
-		width: 100%;
-		aspect-ratio: 4 / 5;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-media);
-		background: var(--color-placeholder);
-		color: var(--color-text-muted);
-		font-size: 0.8rem;
-		line-height: 1.45;
-		text-align: center;
-	}
-
-	.intro-copy {
-		max-width: 44rem;
-	}
-
-	.intro-copy h1 {
+	.intro-heading h1 {
+		position: relative;
+		width: fit-content;
 		margin: 0;
-		font-size: clamp(1.95rem, 4.5vw, 2.35rem);
-		font-weight: 680;
-		letter-spacing: -0.025em;
-		line-height: 1.15;
+		font-size: clamp(2.1rem, 5vw, 2.65rem);
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.1;
+	}
+
+	.intro-heading h1::after {
+		display: block;
+		width: 2.25rem;
+		height: 2px;
+		margin-top: 0.55rem;
+		background: var(--color-link);
+		content: '';
 	}
 
 	.research-role {
-		margin: 0.35rem 0 0;
+		margin: 0.6rem 0 0;
 		color: var(--color-text-muted);
-		font-size: 0.95rem;
+		font-size: 0.96rem;
 		font-weight: 450;
+		line-height: 1.45;
 	}
 
 	.research-role em {
 		font-style: italic;
 	}
 
-	.biography {
-		margin-top: 1.3rem;
+	.intro-profile {
+		grid-area: profile;
+		justify-self: center;
+		width: min(13.5rem, 72vw);
 	}
 
-	.biography p,
-	.research-interests {
-		margin: 0;
-	}
-
-	.biography p + p {
-		margin-top: 0.75rem;
-	}
-
-	.research-interests {
-		margin-top: 1.15rem;
-	}
-
-	.research-interests strong {
-		font-weight: 650;
-	}
-
-	.profile-details {
-		margin-top: 0.85rem;
+	.portrait-placeholder {
+		display: grid;
+		place-items: center;
+		width: min(12.25rem, 100%);
+		aspect-ratio: 1;
+		margin-inline: auto;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: 50%;
+		background: var(--color-placeholder);
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+		line-height: 1.45;
 		text-align: center;
 	}
 
-	.profile-details p,
-	.profile-details a {
-		display: block;
+	.contact-panel {
+		margin-top: 1rem;
+		padding: 0.85rem 0.9rem 0.9rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-card);
+		background: var(--color-surface);
+	}
+
+	.contact-panel h2,
+	.contact-panel p {
 		margin: 0;
 	}
 
-	.profile-details .student-title {
-		font-size: 0.88rem;
+	.contact-panel h2 {
+		margin-bottom: 0.45rem;
+		color: var(--color-text-muted);
+		font-size: 0.68rem;
+		font-weight: 750;
+		letter-spacing: 0.1em;
+		line-height: 1.3;
+		text-transform: uppercase;
+	}
+
+	.student-title {
+		font-size: 0.86rem;
 		font-weight: 680;
 		letter-spacing: -0.01em;
 		line-height: 1.4;
 	}
 
-	.profile-details .institution {
-		margin-top: 0.12rem;
-		color: var(--color-text);
+	.institution {
+		margin-top: 0.12rem !important;
 		font-size: 0.82rem;
 		font-weight: 550;
-		letter-spacing: 0.005em;
 		line-height: 1.4;
 	}
 
-	.profile-details a {
-		margin-top: 0.3rem;
-		color: var(--color-text-muted);
+	.contact-panel a {
+		display: block;
+		margin-top: 0.42rem;
 		font-size: 0.76rem;
 		font-weight: 500;
-		letter-spacing: -0.018em;
+		letter-spacing: -0.015em;
 		line-height: 1.4;
+		overflow-wrap: anywhere;
 		text-decoration: none;
 	}
 
-	.profile-details a:hover,
-	.profile-details a:focus-visible {
-		color: var(--color-link);
+	.contact-panel a:hover,
+	.contact-panel a:focus-visible {
 		text-decoration: underline;
 	}
 
 	.portrait-links {
-		margin-top: 0.75rem;
+		margin-top: 0.8rem;
 	}
 
 	.portrait-links ul {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 0.8rem;
+		justify-content: center;
+		gap: clamp(0.9rem, 5vw, 1.25rem);
 		margin: 0;
-		padding: 0.15rem 0.2rem;
+		padding: 0;
 		list-style: none;
 	}
 
 	.portrait-link {
 		display: grid;
 		place-items: center;
-		width: 1.6rem;
-		height: 1.6rem;
+		width: 1.75rem;
+		height: 1.75rem;
 		color: var(--color-link);
+		text-decoration: none;
+	}
+
+	.portrait-link:not(.is-disabled):hover {
+		color: var(--color-link-hover);
+	}
+
+	.portrait-link.is-disabled {
+		color: var(--color-text-muted);
+		cursor: default;
+		opacity: 0.55;
 	}
 
 	.portrait-link svg {
-		width: 1.3rem;
-		height: 1.3rem;
+		width: 1.25rem;
+		height: 1.25rem;
 		fill: currentColor;
 	}
 
 	.icon-text {
-		font-size: 0.9rem;
+		font-size: 0.88rem;
 		font-weight: 750;
 		letter-spacing: -0.04em;
 		line-height: 1;
 	}
 
+	.intro-copy {
+		grid-area: copy;
+		max-width: 48rem;
+	}
+
+	.biography p,
+	.research-interests h2 {
+		margin: 0;
+	}
+
+	.biography p + p {
+		margin-top: 0.85rem;
+	}
+
+	.research-interests {
+		margin-top: 1.4rem;
+		padding: 0.9rem 1rem;
+		border-left: 3px solid var(--color-link);
+		border-radius: 0 var(--radius-media) var(--radius-media) 0;
+		background: var(--color-accent-soft);
+		font-size: 0.94rem;
+		line-height: 1.55;
+	}
+
+	.research-interests h2 {
+		font-size: 0.94rem;
+		font-weight: 700;
+		line-height: 1.4;
+	}
+
+	.research-interests ol {
+		display: grid;
+		gap: 0.28rem;
+		margin: 0.55rem 0 0;
+		padding-left: 1.35rem;
+		list-style: decimal;
+	}
+
+	.research-interests li {
+		padding-left: 0.15rem;
+	}
+
 	@media (min-width: 40rem) {
 		.intro-layout {
-			grid-template-columns: 12.5rem minmax(0, 1fr);
-			gap: clamp(2rem, 5vw, 3rem);
+			grid-template-columns: 13.5rem minmax(0, 1fr);
+			grid-template-areas:
+				'profile heading'
+				'profile copy';
+			column-gap: clamp(2.25rem, 5vw, 4rem);
+			row-gap: 1.25rem;
 		}
 
 		.intro-profile {
-			width: 12.5rem;
+			justify-self: stretch;
+			width: 100%;
 		}
 	}
 </style>

@@ -26,6 +26,7 @@ export interface Project {
 	venue?: string;
 	year?: string;
 	publicationStatus?: string;
+	awards?: string[];
 	links: ProjectLink[];
 	featured: boolean;
 	placeholder: boolean;
@@ -52,6 +53,7 @@ export const projects: Project[] = [
 		venue: 'Venue to be added',
 		year: 'Year',
 		publicationStatus: 'Publication status to be added',
+		awards: ['Award or distinction to be added'],
 		links: [
 			{ label: 'Paper' },
 			{ label: 'Project' },
@@ -73,6 +75,7 @@ export const projects: Project[] = [
 		authors: placeholderAuthors,
 		venue: 'Venue to be added',
 		year: 'Year',
+		awards: ['Award to be added', 'Additional recognition to be added'],
 		links: [
 			{ label: 'Paper' },
 			{ label: 'Project' },

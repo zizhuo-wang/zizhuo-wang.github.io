@@ -1,19 +1,23 @@
 ---
-import ExperienceList from '../components/ExperienceList.astro';
 import Intro from '../components/Intro.astro';
 import ProjectItem from '../components/ProjectItem.astro';
-import { experienceItems } from '../data/experience';
+import ResearchExperienceList from '../components/ResearchExperienceList.astro';
 import { projects } from '../data/projects';
+import { researchExperienceItems } from '../data/researchExperience';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
 	<Intro />
 
-	<section class="research-section" id="research" aria-labelledby="research-heading">
+	<section
+		class="publications-section"
+		id="publications"
+		aria-labelledby="publications-heading"
+	>
 		<div class="page-container">
 			<header class="section-header">
-				<h2 id="research-heading">Selected Research</h2>
+				<h2 id="publications-heading">Publications</h2>
 			</header>
 
 			<div class="academic-list">
@@ -22,11 +26,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		</div>
 	</section>
 
-	<ExperienceList items={experienceItems} />
+	<ResearchExperienceList items={researchExperienceItems} />
 </BaseLayout>
 
 <style>
-	.research-section {
+	.publications-section {
 		padding-block: clamp(3.5rem, 7vw, 6rem);
 	}
 

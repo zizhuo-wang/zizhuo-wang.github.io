@@ -3,12 +3,7 @@ const homeHref = import.meta.env.BASE_URL;
 
 const navigation = [
 	{ label: 'Home', href: `${homeHref}#top` },
-	{ label: 'Research', href: `${homeHref}#research` },
-	{
-		label: 'Publications',
-		href: `${homeHref}#research`,
-		ariaLabel: 'Publications within Selected Research',
-	},
+	{ label: 'Publications', href: `${homeHref}#publications` },
 	{ label: 'About', href: `${homeHref}#about` },
 ];
 ---
@@ -22,7 +17,7 @@ const navigation = [
 				{
 					navigation.map((item) => (
 						<li>
-							<a href={item.href} aria-label={item.ariaLabel}>{item.label}</a>
+							<a href={item.href}>{item.label}</a>
 						</li>
 					))
 				}

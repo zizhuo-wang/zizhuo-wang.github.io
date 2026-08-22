@@ -7,6 +7,7 @@ interface Props {
 
 const { project } = Astro.props;
 const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
+const hasEqualContributors = project.authors.some((author) => author.equalContribution);
 ---
 
 <article class="project-item" data-placeholder={project.placeholder ? 'true' : undefined}>
@@ -14,7 +15,7 @@ const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
 		{
 			project.media.type === 'video' && project.media.src ? (
 				<video
-					class="project-media"
+					class:list={['project-media', { 'is-contain': project.media.fit === 'contain' }]}
 					src={project.media.src}
 					poster={project.media.poster}
 					aria-label={project.media.alt}
@@ -26,7 +27,12 @@ const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
 					controls
 				/>
 			) : project.media.type === 'image' && project.media.src ? (
-				<img class="project-media" src={project.media.src} alt={project.media.alt} loading="lazy" />
+				<img
+					class:list={['project-media', { 'is-contain': project.media.fit === 'contain' }]}
+					src={project.media.src}
+					alt={project.media.alt}
+					loading="lazy"
+				/>
 			) : (
 				<div class="project-media media-placeholder" role="img" aria-label={project.media.alt}>
 					<span>Project media placeholder</span>
@@ -43,11 +49,24 @@ const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
 				project.authors.map((author, index) => (
 					<span>
 						<span class:list={{ 'site-author': author.isSiteOwner }}>{author.name}</span>
+						{author.equalContribution && (
+							<sup class="equal-contribution-marker">
+								<span aria-hidden="true">*</span>
+								<span class="visually-hidden"> (equal contribution)</span>
+							</sup>
+						)}
 						{index < project.authors.length - 1 ? ', ' : ''}
 					</span>
 				))
 			}
 		</p>
+		{
+			hasEqualContributors && (
+				<p class="author-note">
+					<span aria-hidden="true">*</span> Equal contribution
+				</p>
+			)
+		}
 
 		{
 			(publicationLine || project.publicationStatus || project.awards?.length) && (
@@ -146,6 +165,10 @@ const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
 		object-fit: cover;
 	}
 
+	.project-media.is-contain {
+		object-fit: contain;
+	}
+
 	.media-placeholder {
 		display: grid;
 		place-items: center;
@@ -178,6 +201,20 @@ const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
 
 	.site-author {
 		font-weight: 720;
+	}
+
+	.equal-contribution-marker {
+		margin-left: 0.08em;
+		color: var(--color-text-muted);
+		font-size: 0.7em;
+		line-height: 0;
+	}
+
+	.author-note {
+		margin-top: 0.18rem !important;
+		color: var(--color-text-muted);
+		font-size: 0.72rem;
+		line-height: 1.4;
 	}
 
 	.publication-labels {

@@ -104,8 +104,8 @@ textarea {
 	font: inherit;
 }
 
-[id] {
-	scroll-margin-top: 2rem;
+main [id] {
+	scroll-margin-top: 5rem;
 }
 
 .page-container {

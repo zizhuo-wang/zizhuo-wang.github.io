@@ -3,6 +3,7 @@ export type ProjectLinkLabel = 'Paper' | 'Project' | 'Code' | 'Video' | 'Dataset
 export interface ProjectAuthor {
 	name: string;
 	isSiteOwner?: boolean;
+	equalContribution?: boolean;
 }
 
 export interface ProjectLink {
@@ -15,6 +16,7 @@ export interface ProjectMedia {
 	src?: string;
 	poster?: string;
 	alt: string;
+	fit?: 'cover' | 'contain';
 }
 
 export interface Project {
@@ -38,30 +40,39 @@ const placeholderAuthors: ProjectAuthor[] = [
 	{ name: 'Author B' },
 ];
 
-// TODO: replace with real content. Every entry below is a structural placeholder.
+const assetBase = import.meta.env.BASE_URL;
+
 export const projects: Project[] = [
 	{
-		id: 'project-placeholder-01',
-		title: 'Selected research project title 01',
+		id: 'simrecon',
+		title: 'SimRecon: SimReady Compositional Scene Reconstruction from Real Videos',
 		description:
-			'A concise project summary will explain the research question, method, and main result in one or two sentences.',
+			'SimRecon reconstructs object-centric, simulation-ready scenes from real videos through a Perception–Generation–Simulation pipeline designed for high visual fidelity and physical plausibility.',
 		media: {
-			type: 'placeholder',
-			alt: 'Placeholder for selected research project 01 media',
+			type: 'image',
+			src: `${assetBase}images/publications/simrecon-teaser.webp`,
+			alt: 'SimRecon pipeline for reconstructing simulation-ready object-centric scenes from real videos',
+			fit: 'contain',
 		},
-		authors: placeholderAuthors,
-		venue: 'Venue to be added',
-		year: 'Year',
-		publicationStatus: 'Publication status to be added',
-		awards: ['Award or distinction to be added'],
+		authors: [
+			{ name: 'Chong Xia', equalContribution: true },
+			{ name: 'Kai Zhu', equalContribution: true },
+			{ name: 'Zizhuo Wang', isSiteOwner: true },
+			{ name: 'Fangfu Liu' },
+			{ name: 'Zhizheng Zhang' },
+			{ name: 'Yueqi Duan' },
+		],
+		venue: 'CVPR',
+		year: '2026',
+		publicationStatus: 'Accepted',
+		awards: ['Highlight'],
 		links: [
-			{ label: 'Paper' },
-			{ label: 'Project' },
-			{ label: 'Code' },
-			{ label: 'Video' },
+			{ label: 'Paper', href: 'https://arxiv.org/abs/2603.02133' },
+			{ label: 'Project', href: 'https://xiac20.github.io/SimRecon/' },
+			{ label: 'Code', href: 'https://github.com/xiac20/SimRecon' },
 		],
 		featured: true,
-		placeholder: true,
+		placeholder: false,
 	},
 	{
 		id: 'project-placeholder-02',

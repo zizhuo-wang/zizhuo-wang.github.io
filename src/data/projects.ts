@@ -34,15 +34,58 @@ export interface Project {
 	placeholder: boolean;
 }
 
-const placeholderAuthors: ProjectAuthor[] = [
-	{ name: 'Author A' },
-	{ name: 'Zizhuo Wang', isSiteOwner: true },
-	{ name: 'Author B' },
-];
-
 const assetBase = import.meta.env.BASE_URL;
 
 export const projects: Project[] = [
+	{
+		id: 'tactilestep',
+		title:
+			'TactileStep: Sole Tactile Learning for Regulating Foot–Terrain Interaction in Humanoid Locomotion',
+		description:
+			'TactileStep integrates deployable sole-pressure feedback with phase-aware reinforcement learning to regulate foot–terrain contact, enabling softer landings and more stable support during humanoid locomotion.',
+		media: {
+			type: 'placeholder',
+			alt: 'Video preview forthcoming for TactileStep',
+		},
+		authors: [
+			{ name: 'Zizhuo Wang', isSiteOwner: true, equalContribution: true },
+			{ name: 'Ming-Ju Lee', equalContribution: true },
+			{ name: 'Shaoting Zhu' },
+			{ name: 'Haozhe Lou' },
+			{ name: 'Hang Zhao' },
+			{ name: 'Yiming Li' },
+		],
+		venue: 'CoRL',
+		year: '2026',
+		publicationStatus: 'Accepted',
+		links: [{ label: 'Paper' }],
+		featured: true,
+		placeholder: false,
+	},
+	{
+		id: 'echo-in-the-steps',
+		title: 'Echo in the Steps: Learning Perceptive Humanoid Parkour with Gated Memory',
+		description:
+			'An end-to-end humanoid parkour framework combines foothold saliency, gated temporal memory, and alternating-step regularization to achieve precise foot placement on sparse terrain using onboard depth sensing.',
+		media: {
+			type: 'placeholder',
+			alt: 'Video preview forthcoming for Echo in the Steps',
+		},
+		authors: [
+			{ name: 'Ming-Ju Lee', equalContribution: true },
+			{ name: 'Zizhuo Wang', isSiteOwner: true, equalContribution: true },
+			{ name: 'Shaoting Zhu' },
+			{ name: 'Haozhe Lou' },
+			{ name: 'Hang Zhao' },
+			{ name: 'Yiming Li' },
+		],
+		venue: 'CoRL',
+		year: '2026',
+		publicationStatus: 'Accepted',
+		links: [{ label: 'Paper' }],
+		featured: true,
+		placeholder: false,
+	},
 	{
 		id: 'simrecon',
 		title: 'SimRecon: SimReady Compositional Scene Reconstruction from Real Videos',
@@ -73,47 +116,5 @@ export const projects: Project[] = [
 		],
 		featured: true,
 		placeholder: false,
-	},
-	{
-		id: 'project-placeholder-02',
-		title: 'Selected research project title 02',
-		description:
-			'A concise project summary will explain the research question, method, and main result in one or two sentences.',
-		media: {
-			type: 'placeholder',
-			alt: 'Placeholder for selected research project 02 media',
-		},
-		authors: placeholderAuthors,
-		venue: 'Venue to be added',
-		year: 'Year',
-		awards: ['Award to be added', 'Additional recognition to be added'],
-		links: [
-			{ label: 'Paper' },
-			{ label: 'Project' },
-			{ label: 'Video' },
-			{ label: 'Dataset' },
-		],
-		featured: true,
-		placeholder: true,
-	},
-	{
-		id: 'project-placeholder-03',
-		title: 'Selected research project title 03',
-		description:
-			'A concise project summary will explain the research question, method, and main result in one or two sentences.',
-		media: {
-			type: 'placeholder',
-			alt: 'Placeholder for selected research project 03 media',
-		},
-		authors: placeholderAuthors,
-		venue: 'Venue to be added',
-		year: 'Year',
-		links: [
-			{ label: 'Paper' },
-			{ label: 'Project' },
-			{ label: 'Code' },
-		],
-		featured: true,
-		placeholder: true,
 	},
 ];

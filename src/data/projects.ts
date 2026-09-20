@@ -17,6 +17,11 @@ export interface ProjectMedia {
 	poster?: string;
 	alt: string;
 	fit?: 'cover' | 'contain';
+	/** Native media dimensions, when known, reserve space before loading. */
+	width?: number;
+	height?: number;
+	/** Placeholder/loading ratio (e.g. 4 / 3); loaded media uses its native ratio. */
+	aspectRatio?: number;
 }
 
 export interface Project {
@@ -87,6 +92,28 @@ export const projects: Project[] = [
 		placeholder: false,
 	},
 	{
+		id: 'customized-origami-end-effectors',
+		title:
+			'Computational Design of Customized Tendon-Driven Origami End-Effectors for Enveloping Grasp',
+		description:
+			'An end-to-end framework uses reinforcement learning to design object-specific origami grippers from target meshes, translating optimized geometries into manufacturable crease patterns and single-motor tendon-driven hardware for reliable, high-load enveloping grasps.',
+		media: {
+			type: 'placeholder',
+			alt: 'Media preview forthcoming for customized tendon-driven origami end-effectors',
+		},
+		authors: [
+			{ name: 'Zizhuo Wang', isSiteOwner: true },
+			{ name: 'Peiwen Yang' },
+			{ name: 'Shuguang Li' },
+		],
+		venue: 'arXiv preprint',
+		year: '2026',
+		publicationStatus: 'Under review',
+		links: [{ label: 'Paper' }],
+		featured: true,
+		placeholder: false,
+	},
+	{
 		id: 'simrecon',
 		title: 'SimRecon: SimReady Compositional Scene Reconstruction from Real Videos',
 		description:
@@ -94,6 +121,8 @@ export const projects: Project[] = [
 		media: {
 			type: 'image',
 			src: `${assetBase}images/publications/simrecon-teaser.webp`,
+			width: 1600,
+			height: 779,
 			alt: 'SimRecon pipeline for reconstructing simulation-ready object-centric scenes from real videos',
 			fit: 'contain',
 		},

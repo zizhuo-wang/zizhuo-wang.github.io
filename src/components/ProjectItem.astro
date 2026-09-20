@@ -7,16 +7,21 @@ interface Props {
 
 const { project } = Astro.props;
 const publicationLine = [project.venue, project.year].filter(Boolean).join(' ');
-const hasEqualContributors = project.authors.some((author) => author.equalContribution);
+const mediaAspectRatio =
+	project.media.width && project.media.height
+		? project.media.width / project.media.height
+		: (project.media.aspectRatio ?? 16 / 9);
 ---
 
 <article class="project-item" data-placeholder={project.placeholder ? 'true' : undefined}>
-	<div class="media-frame">
+	<div class="media-frame" style={{ '--media-aspect-ratio': mediaAspectRatio }}>
 		{
 			project.media.type === 'video' && project.media.src ? (
 				<video
 					class:list={['project-media', { 'is-contain': project.media.fit === 'contain' }]}
 					src={project.media.src}
+					width={project.media.width}
+					height={project.media.height}
 					poster={project.media.poster}
 					aria-label={project.media.alt}
 					data-project-video
@@ -30,6 +35,8 @@ const hasEqualContributors = project.authors.some((author) => author.equalContri
 				<img
 					class:list={['project-media', { 'is-contain': project.media.fit === 'contain' }]}
 					src={project.media.src}
+					width={project.media.width}
+					height={project.media.height}
 					alt={project.media.alt}
 					loading="lazy"
 				/>
@@ -60,13 +67,6 @@ const hasEqualContributors = project.authors.some((author) => author.equalContri
 				))
 			}
 		</p>
-		{
-			hasEqualContributors && (
-				<p class="author-note">
-					<span aria-hidden="true">*</span> Equal contribution
-				</p>
-			)
-		}
 
 		{
 			(publicationLine || project.publicationStatus || project.awards?.length) && (
@@ -151,6 +151,7 @@ const hasEqualContributors = project.authors.some((author) => author.equalContri
 	}
 
 	.media-frame {
+		min-width: 0;
 		align-self: start;
 		overflow: hidden;
 		border-radius: var(--radius-media);
@@ -160,7 +161,8 @@ const hasEqualContributors = project.authors.some((author) => author.equalContri
 	.project-media {
 		display: block;
 		width: 100%;
-		aspect-ratio: 16 / 9;
+		height: auto;
+		aspect-ratio: auto var(--media-aspect-ratio);
 		background: var(--color-placeholder);
 		object-fit: cover;
 	}
@@ -170,6 +172,7 @@ const hasEqualContributors = project.authors.some((author) => author.equalContri
 	}
 
 	.media-placeholder {
+		aspect-ratio: var(--media-aspect-ratio);
 		display: grid;
 		place-items: center;
 		color: var(--color-text-muted);
@@ -211,13 +214,6 @@ const hasEqualContributors = project.authors.some((author) => author.equalContri
 		color: var(--color-text-muted);
 		font-size: 0.9em;
 		line-height: 0;
-	}
-
-	.author-note {
-		margin-top: 0.18rem !important;
-		color: var(--color-text-muted);
-		font-size: 0.72rem;
-		line-height: 1.4;
 	}
 
 	.publication-labels {

@@ -31,6 +31,19 @@
 	--font-size-section-title: clamp(1.4rem, 3vw, 1.6rem);
 }
 
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--color-background: #181a1d;
+	--color-surface: #202328;
+	--color-text: #ecedef;
+	--color-text-muted: #adb1b8;
+	--color-border: #353a42;
+	--color-border-strong: #555d68;
+	--color-link: #8ab7e8;
+	--color-link-hover: #b0d2f5;
+	--color-accent-soft: #253446;
+}
+
 *,
 *::before,
 *::after {
@@ -44,6 +57,10 @@ html {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100svh;
 	min-width: 20rem;
 	margin: 0;
 	background: var(--color-background);
@@ -54,6 +71,16 @@ body {
 	line-height: 1.62;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
+}
+
+body > header,
+body > footer {
+	flex: none;
+}
+
+main {
+	flex: 1;
+	min-width: 0;
 }
 
 main:focus {

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Photography | Zizhuo Wang"
+	description="Personal photography by Zizhuo Wang. Selected photographs will be added soon."
+	theme="dark"
+>
+	<section class="photography page-container" aria-labelledby="photography-heading">
+		<h1 id="photography-heading">Photography</h1>
+		<p>Selected photographs will be added soon.</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.photography {
+		padding-block: clamp(4rem, 10vw, 8rem);
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2.25rem, 6vw, 3.5rem);
+		font-weight: 600;
+		letter-spacing: -0.035em;
+		line-height: 1.15;
+	}
+
+	p {
+		max-width: 36rem;
+		margin: 1.25rem 0 0;
+		color: var(--color-text-muted);
+		font-size: 0.95rem;
+	}
+</style>

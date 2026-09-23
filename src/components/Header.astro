@@ -1,9 +1,13 @@
 ---
-const homeHref = import.meta.env.BASE_URL;
+const homeHref = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const photographyHref = `${homeHref}photography/`;
+const isPhotographyPage =
+	Astro.url.pathname.replace(/\/$/, '') === photographyHref.replace(/\/$/, '');
 
 const navigation = [
 	{ label: 'Publications', href: `${homeHref}#publications` },
 	{ label: 'Experience', href: `${homeHref}#research-experience` },
+	{ label: 'Photography', href: photographyHref },
 ];
 ---
 
@@ -18,7 +22,12 @@ const navigation = [
 				{
 					navigation.map((item) => (
 						<li>
-							<a href={item.href}>{item.label}</a>
+							<a
+								href={item.href}
+								aria-current={isPhotographyPage && item.href === photographyHref ? 'page' : undefined}
+							>
+								{item.label}
+							</a>
 						</li>
 					))
 				}
@@ -63,9 +72,14 @@ const navigation = [
 	}
 
 	.primary-navigation {
+		position: relative;
 		flex: 0 1 auto;
 		min-width: 0;
+		margin-inline: -0.35rem;
 		overflow-x: auto;
+		scroll-behavior: auto;
+		scroll-padding-inline: 0.35rem;
+		scroll-snap-type: x mandatory;
 		overscroll-behavior-inline: contain;
 		scrollbar-width: none;
 	}
@@ -80,24 +94,33 @@ const navigation = [
 		gap: var(--header-navigation-gap);
 		width: max-content;
 		margin: 0;
-		padding: 0;
+		padding: 0.35rem;
 		list-style: none;
 	}
 
 	.primary-navigation a,
 	.pending-link {
+		display: inline-block;
+		padding-block: 0.2rem;
 		font-size: 0.875rem;
 		line-height: 1.4;
 		white-space: nowrap;
 	}
 
 	.primary-navigation a {
+		scroll-margin-inline: 0.35rem;
 		color: var(--color-text);
 		text-decoration: none;
 	}
 
-	.primary-navigation a:hover,
 	.primary-navigation a:focus-visible {
+		/* Reveal partially clipped keyboard targets without changing touch scrolling. */
+		scroll-snap-align: center;
+	}
+
+	.primary-navigation a:hover,
+	.primary-navigation a:focus-visible,
+	.primary-navigation a[aria-current='page'] {
 		color: var(--color-link);
 		text-decoration: underline;
 		text-decoration-thickness: 1px;
@@ -113,10 +136,6 @@ const navigation = [
 		.header-inner {
 			min-height: 3.75rem;
 			padding-block: 0.75rem;
-		}
-
-		.primary-navigation {
-			overflow: visible;
 		}
 
 		.primary-navigation ul {

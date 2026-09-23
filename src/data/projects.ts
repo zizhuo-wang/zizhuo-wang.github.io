@@ -49,8 +49,13 @@ export const projects: Project[] = [
 		description:
 			'TactileStep integrates deployable sole-pressure feedback with phase-aware reinforcement learning to regulate foot–terrain contact, enabling softer landings and more stable support during humanoid locomotion.',
 		media: {
-			type: 'placeholder',
-			alt: 'Video preview forthcoming for TactileStep',
+			type: 'video',
+			src: `${assetBase}videos/publications/tactilestep-hero.mp4`,
+			poster: `${assetBase}images/publications/tactilestep-poster.webp`,
+			width: 1920,
+			height: 1080,
+			alt: 'TactileStep humanoid locomotion demonstration with sole-pressure feedback',
+			fit: 'contain',
 		},
 		authors: [
 			{ name: 'Zizhuo Wang', isSiteOwner: true, equalContribution: true },
@@ -73,8 +78,13 @@ export const projects: Project[] = [
 		description:
 			'An end-to-end humanoid parkour framework combines foothold saliency, gated temporal memory, and alternating-step regularization to achieve precise foot placement on sparse terrain using onboard depth sensing.',
 		media: {
-			type: 'placeholder',
-			alt: 'Video preview forthcoming for Echo in the Steps',
+			type: 'video',
+			src: `${assetBase}videos/publications/echo-in-the-steps.mp4`,
+			poster: `${assetBase}images/publications/echo-in-the-steps-poster.webp`,
+			width: 1280,
+			height: 720,
+			alt: 'Echo in the Steps humanoid parkour demonstration on sparse terrain',
+			fit: 'contain',
 		},
 		authors: [
 			{ name: 'Ming-Ju Lee', equalContribution: true },

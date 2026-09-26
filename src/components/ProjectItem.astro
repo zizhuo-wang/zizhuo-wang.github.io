@@ -86,7 +86,9 @@ const mediaAspectRatio =
 			{
 				project.links.map((link) =>
 					link.href ? (
-						<a href={link.href}>{link.label}</a>
+						<a href={link.href} target="_blank" rel="noopener noreferrer">
+							{link.label}<span class="visually-hidden"> (opens in a new tab)</span>
+						</a>
 					) : (
 						<span aria-disabled="true">
 							{link.label}<span class="visually-hidden"> link forthcoming</span>

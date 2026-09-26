@@ -1,4 +1,4 @@
-export type ProjectLinkLabel = 'Paper' | 'Project' | 'Code' | 'Video' | 'Dataset';
+export type ProjectLinkLabel = 'Paper' | 'Project' | 'Code' | 'Code (coming soon)' | 'Video' | 'Dataset';
 
 export interface ProjectAuthor {
 	name: string;
@@ -68,7 +68,11 @@ export const projects: Project[] = [
 		venue: 'CoRL',
 		year: '2026',
 		publicationStatus: 'Accepted',
-		links: [{ label: 'Paper' }],
+		links: [
+			{ label: 'Paper', href: 'https://arxiv.org/abs/2609.28959' },
+			{ label: 'Project', href: 'https://tactilestep.github.io/' },
+			{ label: 'Code (coming soon)' },
+		],
 		featured: true,
 		placeholder: false,
 	},
@@ -97,7 +101,11 @@ export const projects: Project[] = [
 		venue: 'CoRL',
 		year: '2026',
 		publicationStatus: 'Accepted',
-		links: [{ label: 'Paper' }],
+		links: [
+			{ label: 'Paper', href: 'https://arxiv.org/abs/2609.28960' },
+			{ label: 'Project', href: 'https://echo-in-the-steps.github.io/' },
+			{ label: 'Code (coming soon)' },
+		],
 		featured: true,
 		placeholder: false,
 	},

@@ -75,7 +75,11 @@ const mediaAspectRatio =
 					{project.publicationStatus && (
 						<span class="status-label">{project.publicationStatus}</span>
 					)}
-					{project.awards?.map((award) => <span class="award-label">{award}</span>)}
+					{project.awards?.map((award) => (
+						<span class:list={['award-label', { 'is-spotlight': award.startsWith('Spotlight') }]}>
+							{award}
+						</span>
+					))}
 				</div>
 			)
 		}
@@ -253,6 +257,11 @@ const mediaAspectRatio =
 	.award-label {
 		background: var(--color-award-soft);
 		color: var(--color-award);
+	}
+
+	.award-label.is-spotlight {
+		background: #fff0ee;
+		color: #b4232d;
 	}
 
 	.description {

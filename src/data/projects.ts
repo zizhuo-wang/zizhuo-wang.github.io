@@ -68,6 +68,7 @@ export const projects: Project[] = [
 		venue: 'CoRL',
 		year: '2026',
 		publicationStatus: 'Accepted',
+		awards: ['Spotlight (3.4%)'],
 		links: [
 			{ label: 'Paper', href: 'https://arxiv.org/abs/2609.28959' },
 			{ label: 'Project', href: 'https://tactilestep.github.io/' },

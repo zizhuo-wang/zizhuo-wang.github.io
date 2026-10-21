@@ -67,7 +67,6 @@ export const projects: Project[] = [
 		],
 		venue: 'CoRL',
 		year: '2026',
-		publicationStatus: 'Accepted',
 		awards: ['Spotlight (3.4%)'],
 		links: [
 			{ label: 'Paper', href: 'https://arxiv.org/abs/2609.28959' },
@@ -101,7 +100,6 @@ export const projects: Project[] = [
 		],
 		venue: 'CoRL',
 		year: '2026',
-		publicationStatus: 'Accepted',
 		links: [
 			{ label: 'Paper', href: 'https://arxiv.org/abs/2609.28960' },
 			{ label: 'Project', href: 'https://echo-in-the-steps.github.io/' },
@@ -160,7 +158,6 @@ export const projects: Project[] = [
 		],
 		venue: 'CVPR',
 		year: '2026',
-		publicationStatus: 'Accepted',
 		awards: ['Highlight'],
 		links: [
 			{ label: 'Paper', href: 'https://arxiv.org/abs/2603.02133' },

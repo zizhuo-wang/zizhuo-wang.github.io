@@ -1,0 +1,32 @@
+Research experience logo sources
+
+THUSI Lab
+Official organization: https://github.com/THUSI-Lab
+Asset: https://avatars.githubusercontent.com/u/265247308?s=200&v=4
+Local: thusi-logo.png (200 x 200)
+Converted the supplied JPEG avatar to PNG without changing its content.
+
+EMBER Center
+Official website: https://ember-lab.eecs.berkeley.edu/
+Asset: https://ember-lab.eecs.berkeley.edu/images/logo/logo_3.png
+Local: ember-logo.png (384 x 384)
+Resized proportionally; preserved transparency and original logo artwork.
+
+IVG Lab -- institutional fallback, NOT an IVG-specific logo
+Group verified at: https://web.ee.tsinghua.edu.cn/duanyueqi/en/index.htm
+Official university identity page: https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm
+Asset: https://vi.tsinghua.edu.cn/__local/8/1C/21/2F02A66E31BF084FE340463BB47_B9A95F73_185BC.jpg
+Local: tsinghua-logo.png (384 x 384)
+Removed surrounding blank canvas, retained padding around the complete emblem,
+and resized proportionally. No part of the emblem was cropped or redrawn.
+Replace only if an authentic logo for Yueqi Duan's IVG Lab is verified.
+
+The ShuGuang Lab (SGLab)
+Official website: https://www.lisglab.com/
+Asset: https://static.wixstatic.com/media/94d7ba_d3ccf3b905aa41448df5cad834e18cf7~mv2.png
+Local: sglab-logo.png (384 x 326)
+Resized proportionally; preserved transparency and original logo artwork.
+
+Logos identify the corresponding labs or institution. No affiliation dates or
+personal research topics were inferred from these sources; those were supplied
+by the site owner. Assets are served locally, with object-fit: contain.

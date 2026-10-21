@@ -1,0 +1,157 @@
+---
+import type { ResearchExperienceItem } from '../data/researchExperience';
+
+interface Props {
+	item: ResearchExperienceItem;
+}
+
+const { item } = Astro.props;
+const logoSrc = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${item.logoPath}`;
+const monthNames = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
+const formatMonth = (date: string) => {
+	const [year, month] = date.split('-');
+	return `${monthNames[Number(month) - 1]} ${year}`;
+};
+---
+
+<li class="experience-item" id={item.id}>
+	<div class="lab-logo">
+		<img
+			src={logoSrc}
+			alt={item.logoAlt}
+			width={item.logoWidth}
+			height={item.logoHeight}
+			loading="lazy"
+			decoding="async"
+		/>
+	</div>
+	<div class="experience-content">
+		<div class="experience-heading">
+			<h3>
+				{item.labUrl ? (
+					<a href={item.labUrl} target="_blank" rel="noopener noreferrer">{item.labName}</a>
+				) : item.labName}
+				{item.labFullName && <span class="lab-full-name"> ({item.labFullName})</span>}
+			</h3>
+			<p class="period">
+				<time datetime={item.startDate}>{formatMonth(item.startDate)}</time>
+				<span aria-hidden="true"> – </span><span class="visually-hidden"> to </span>
+				{item.endDate ? <time datetime={item.endDate}>{formatMonth(item.endDate)}</time> : 'Present'}
+			</p>
+		</div>
+		<p class="institution">{item.institution}</p>
+		<p class="advisor">
+			<span class="detail-label">Advisor:</span>{' '}
+			<a href={item.advisorUrl} target="_blank" rel="noopener noreferrer">{item.advisorName}</a>
+		</p>
+		<p class="research-topic"><span class="detail-label">Research:</span> {item.researchTopic}</p>
+	</div>
+</li>
+
+<style>
+	.experience-item {
+		display: grid;
+		grid-template-columns: 4rem minmax(0, 1fr);
+		align-items: start;
+		gap: 1rem;
+	}
+
+	.lab-logo {
+		display: grid;
+		place-items: center;
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.lab-logo img {
+		min-width: 0;
+		min-height: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	.experience-content {
+		min-width: 0;
+	}
+
+	.experience-heading {
+		display: grid;
+		gap: 0.25rem;
+		margin-bottom: 0.3rem;
+	}
+
+	h3,
+	p {
+		margin: 0;
+	}
+
+	h3 {
+		min-width: 0;
+		font-size: 1.125rem;
+		font-weight: 650;
+		line-height: 1.4;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:hover,
+	a:focus-visible {
+		text-decoration: underline;
+	}
+
+	.lab-full-name {
+		color: var(--color-text-muted);
+		font-size: 0.86rem;
+		font-weight: 400;
+	}
+
+	.period {
+		flex: none;
+		color: var(--color-text-muted);
+		font-size: 0.8125rem;
+		font-variant-numeric: tabular-nums;
+		line-height: 1.6;
+	}
+
+	.institution,
+	.advisor,
+	.research-topic {
+		font-size: 0.9rem;
+		line-height: 1.55;
+		overflow-wrap: anywhere;
+	}
+
+	.institution,
+	.detail-label {
+		color: var(--color-text-muted);
+	}
+
+	.advisor,
+	.research-topic {
+		margin-top: 0.2rem;
+	}
+
+	@media (min-width: 40rem) {
+		.experience-item {
+			grid-template-columns: 6.25rem minmax(0, 1fr);
+			gap: 1.5rem;
+		}
+
+		.lab-logo {
+			width: 6rem;
+			height: 5.375rem;
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.experience-heading {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 0.5rem 1.5rem;
+		}
+	}
+</style>

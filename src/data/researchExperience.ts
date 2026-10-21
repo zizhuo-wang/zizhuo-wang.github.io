@@ -70,7 +70,7 @@ export const researchExperienceItems: ResearchExperienceItem[] = [
 		advisorName: 'Prof. Shuguang Li',
 		advisorUrl: 'https://www.lisglab.com/shuguangli',
 		labUrl: 'https://www.lisglab.com/',
-		researchTopic: 'Computational Design & Fabrication of Origami Grippers',
+		researchTopic: 'Computational Design & Fabrication of Origami Robots',
 		startDate: '2024-10',
 		endDate: '2026-10',
 		logoPath: 'images/labs/sglab-logo.png',

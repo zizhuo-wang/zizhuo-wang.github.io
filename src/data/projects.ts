@@ -117,8 +117,13 @@ export const projects: Project[] = [
 		description:
 			'An end-to-end framework uses reinforcement learning to design object-specific origami grippers from target meshes, translating optimized geometries into manufacturable crease patterns and single-motor tendon-driven hardware for reliable, high-load enveloping grasps.',
 		media: {
-			type: 'placeholder',
-			alt: 'Media preview forthcoming for customized tendon-driven origami end-effectors',
+			type: 'video',
+			src: `${assetBase}videos/publications/origami-gripper.mp4`,
+			poster: `${assetBase}images/publications/origami-gripper-poster.webp`,
+			width: 1280,
+			height: 960,
+			alt: 'Customized tendon-driven origami gripper demonstrating enveloping grasps',
+			fit: 'contain',
 		},
 		authors: [
 			{ name: 'Zizhuo Wang', isSiteOwner: true },
@@ -127,7 +132,7 @@ export const projects: Project[] = [
 		],
 		venue: 'arXiv preprint',
 		year: '2026',
-		publicationStatus: 'Under review',
+		publicationStatus: 'RA-L revise and resubmit',
 		links: [{ label: 'Paper' }],
 		featured: true,
 		placeholder: false,

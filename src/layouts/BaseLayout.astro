@@ -10,12 +10,11 @@ interface Props {
 }
 
 const {
-	title = 'Zizhuo Wang | Robotics & AI Researcher',
+	title = 'Zizhuo Wang | About Me.',
 	description = 'The personal academic homepage of Zizhuo Wang, a robotics and artificial intelligence researcher.',
 	theme = 'light',
 } = Astro.props;
 
-const faviconHref = `${import.meta.env.BASE_URL}favicon.svg`;
 ---
 
 <!doctype html>
@@ -26,7 +25,7 @@ const faviconHref = `${import.meta.env.BASE_URL}favicon.svg`;
 		<meta name="description" content={description} />
 		<meta name="theme-color" content={theme === 'dark' ? '#181a1d' : '#f7f5f0'} />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href={faviconHref} />
+		<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" />
 		<title>{title}</title>
 	</head>
 	<body id="top">

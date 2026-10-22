@@ -2,6 +2,25 @@
 
 个人学术主页，使用 Astro、TypeScript 和 Tailwind CSS 4 构建，包含个人介绍、联系方式、Publications 和 Research Experience。
 
+## 在线主页与部署
+
+- 主页：<https://zizhuo-wang.github.io/>
+- 部署仓库：<https://github.com/zizhuo-wang/zizhuo-wang.github.io>
+- 向部署仓库的 `main` 分支推送后，GitHub Actions 自动构建并发布；进度可在仓库的 Actions 页面查看。
+- 使用组织根地址，不添加仓库路径前缀，也不需要购买域名或配置 `CNAME`。
+
+本地 `origin` 指向部署仓库，原仓库保留为 `legacy` 远端。日常更新：
+
+```powershell
+npm.cmd run build
+git diff --check
+git add <需要提交的文件>
+git commit -m "Update homepage"
+git push origin main
+```
+
+部署工作流仅在 `zizhuo-wang/zizhuo-wang.github.io` 中运行，不会在原仓库重复发布。
+
 ## 本地预览：在默认浏览器中打开
 
 在 Windows PowerShell 中运行：

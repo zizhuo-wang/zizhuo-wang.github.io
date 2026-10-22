@@ -4,9 +4,21 @@
 			<span>Beyond Research</span>
 			<span class="summary-indicator" aria-hidden="true"></span>
 		</summary>
-		<div class="beyond-content" data-placeholder="true">
-			<!-- TODO: replace with personal interests and short introduction -->
-			<p>TODO: replace with personal interests and short introduction</p>
+		<div class="beyond-content">
+			<p class="life-first"><strong><em>Life always comes first!</em></strong> 😏</p>
+			<p>
+				I can hardly imagine life without sports. I've played basketball 🏀 for eight years,
+				and since coming to Tsinghua, I've also picked up tennis 🎾 and started working out 💪.
+			</p>
+			<p>
+				I love traveling and spending time in nature 🏞️. One of my biggest dreams is to
+				travel around the world, explore its hidden corners, and discover all the wonders
+				it has to offer 🤩.
+			</p>
+			<p>
+				Recently, I've also gotten into photography 📸. I'm still very much a beginner,
+				but that's part of the fun—there's always something new to learn and capture! 🚀
+			</p>
 		</div>
 	</details>
 </div>
@@ -58,6 +70,23 @@
 		margin: 0;
 		color: var(--color-text-muted);
 		font-size: 0.84rem;
-		line-height: 1.55;
+		line-height: 1.6;
+	}
+
+	.beyond-content p + p {
+		margin-top: 0.75rem;
+	}
+
+	.beyond-content .life-first {
+		color: var(--color-text);
+		font-size: 0.95rem;
+	}
+
+	.life-first strong {
+		font-weight: 700;
+	}
+
+	.life-first em {
+		font-style: italic;
 	}
 </style>

@@ -133,19 +133,38 @@ const portraitLinks: PortraitLink[] = [
 		<div class="intro-copy">
 			<div class="biography">
 				<p>
-					I am currently an undergraduate student in Weiyang College, Tsinghua University.
+					I am currently a senior undergraduate student at{' '}
+					<a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer">Tsinghua University</a>,
+					working on robotics and embodied intelligence. I recently spent a wonderful summer at
+					UC Berkeley's <a href="https://ember-lab.eecs.berkeley.edu/" target="_blank" rel="noopener noreferrer">EMBER Center</a>,
+					advised by <a href="https://people.eecs.berkeley.edu/~sastry/" target="_blank" rel="noopener noreferrer">Prof. Shankar Sastry</a>.
+					I have also been fortunate to work closely with{' '}
+					<a href="https://yimingli-page.github.io/" target="_blank" rel="noopener noreferrer">Prof. Yiming Li</a>,{' '}
+					<a href="https://hangzhaomit.github.io/" target="_blank" rel="noopener noreferrer">Prof. Hang Zhao</a>,
+					and <a href="https://www.lisglab.com/shuguangli" target="_blank" rel="noopener noreferrer">Prof. Shuguang Li</a>.
 				</p>
 				<p>
-					I am currently seeking a PhD position starting in 2027 Fall, and am happy to discuss potential opportunities.
+					I particularly enjoy bridging learning algorithms and real robotic systems, where
+					physical interaction not only tests our ideas but also inspires new ones.
+				</p>
+				<p>
+					I am currently <strong>seeking PhD opportunities starting in Fall 2027</strong>,
+					and I would be excited to connect and explore potential research opportunities and collaborations.
 				</p>
 			</div>
 
 			<div class="research-interests">
 				<h2>Research Interests</h2>
+				<p class="research-overview">
+					My research has spanned robot design, humanoid locomotion, tactile-informed robot
+					learning, and manipulation. More recently, I have become particularly interested in
+					agentic robot self-improvement.
+				</p>
+				<p class="interests-lead">My research interests include:</p>
 				<ol>
-					<li>Humanoid Robotics</li>
-					<li>Robot Learning &amp; Loco-Manipulation</li>
-					<li>Tactile Sensing &amp; Dexterous Interaction</li>
+					<li><strong><em>Agentic Robotics &amp; Self-Improvement</em></strong></li>
+					<li><strong><em>Humanoid Robotics &amp; Whole-Body Control</em></strong></li>
+					<li><strong><em>Tactile Sensing &amp; Contact-Rich Interaction</em></strong></li>
 				</ol>
 			</div>
 
@@ -370,7 +389,20 @@ const portraitLinks: PortraitLink[] = [
 	}
 
 	.biography p + p {
-		margin-top: 0.85rem;
+		margin-top: 0.95rem;
+	}
+
+	.biography a {
+		text-decoration: none;
+	}
+
+	.biography a:hover,
+	.biography a:focus-visible {
+		text-decoration: underline;
+	}
+
+	.biography strong {
+		font-weight: 700;
 	}
 
 	.research-interests {
@@ -384,9 +416,17 @@ const portraitLinks: PortraitLink[] = [
 	}
 
 	.research-interests h2 {
-		font-size: 1rem;
+		font-size: 1.1rem;
 		font-weight: 700;
 		line-height: 1.4;
+	}
+
+	.research-overview {
+		margin: 0.65rem 0 0;
+	}
+
+	.interests-lead {
+		margin: 0.9rem 0 0;
 	}
 
 	.research-interests ol {
@@ -399,6 +439,14 @@ const portraitLinks: PortraitLink[] = [
 
 	.research-interests li {
 		padding-left: 0.15rem;
+	}
+
+	.research-interests strong {
+		font-weight: 650;
+	}
+
+	.research-interests em {
+		font-style: italic;
 	}
 
 	@media (min-width: 40rem) {

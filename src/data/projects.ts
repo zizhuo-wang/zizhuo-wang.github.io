@@ -130,7 +130,7 @@ export const projects: Project[] = [
 		],
 		venue: 'RA-L',
 		year: '2026',
-		publicationStatus: 'Revise and resubmit',
+		publicationStatus: 'Under review',
 		links: [{ label: 'Paper' }],
 		featured: true,
 		placeholder: false,
